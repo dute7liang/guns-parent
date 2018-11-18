@@ -18,7 +18,7 @@ import java.util.Date;
  * @Date: 2018-11-17 16:24
  */
 @Component
-@Service
+@Service(interfaceClass = UserApi.class,loadbalance = "roundrobin")
 public class DefaultUserImpl implements UserApi {
 
 	@Autowired
@@ -58,7 +58,7 @@ public class DefaultUserImpl implements UserApi {
 		EntityWrapper<UserT> entityWrapper = new EntityWrapper<>();
 		entityWrapper.eq("user_name", userName);
 		Integer integer = userTMapper.selectCount(entityWrapper);
-		if(integer != null && integer > 0){
+		if(integer != null && integer == 0){
 			return true;
 		}
 		return false;
@@ -111,7 +111,7 @@ public class DefaultUserImpl implements UserApi {
 		userT.setUpdateTime(new Date());
 		Integer integer = userTMapper.updateById(userT);
 		if(integer != null && integer > 0){
-			return getUserInfo(integer);
+			return getUserInfo(userInfoModel.getUuid());
 		}
 		return null;
 	}

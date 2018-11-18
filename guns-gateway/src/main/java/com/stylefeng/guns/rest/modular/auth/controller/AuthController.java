@@ -37,8 +37,7 @@ public class AuthController {
     @RequestMapping(value = "${jwt.auth-path}")
     public ResponseVo<?> createAuthenticationToken(AuthRequest authRequest) {
         boolean validate = true;
-//        int userId = userApi.login(authRequest.getUserName(), authRequest.getPassword());
-        int userId = 3;
+        int userId = userApi.login(authRequest.getUserName(), authRequest.getPassword());
         if(userId == 0){
             validate = false;
         }
