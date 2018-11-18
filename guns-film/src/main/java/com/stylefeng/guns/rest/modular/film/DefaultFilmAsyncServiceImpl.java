@@ -1,18 +1,17 @@
 package com.stylefeng.guns.rest.modular.film;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
 import com.stylefeng.guns.api.film.FilmAsyncServiceApi;
-import com.stylefeng.guns.api.film.FilmServiceApi;
-import com.stylefeng.guns.api.film.vo.*;
-import com.stylefeng.guns.core.util.DateUtil;
-import com.stylefeng.guns.rest.common.persistence.dao.*;
-import com.stylefeng.guns.rest.common.persistence.model.*;
+import com.stylefeng.guns.api.film.vo.ActorVo;
+import com.stylefeng.guns.api.film.vo.FilmDescVo;
+import com.stylefeng.guns.api.film.vo.ImgVo;
+import com.stylefeng.guns.rest.common.persistence.dao.ActorTMapper;
+import com.stylefeng.guns.rest.common.persistence.dao.FilmInfoTMapper;
+import com.stylefeng.guns.rest.common.persistence.model.ActorT;
+import com.stylefeng.guns.rest.common.persistence.model.FilmInfoT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
