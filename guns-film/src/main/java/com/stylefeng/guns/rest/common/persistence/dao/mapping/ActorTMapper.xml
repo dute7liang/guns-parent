@@ -11,7 +11,7 @@
 
 
 
-    <select id="getActors" parameterType="java.lang.String" resultType="com.stylefeng.guns.api.film.vo.ActorVO">
+    <select id="getActors" parameterType="java.lang.String" resultType="com.stylefeng.guns.api.film.vo.ActorVo">
         select actor.`actor_name` as directorName,
                 actor.`actor_img` as imgAddress,
                 rela.`role_name`  as roleName

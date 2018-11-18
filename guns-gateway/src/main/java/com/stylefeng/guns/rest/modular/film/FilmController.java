@@ -222,7 +222,6 @@ public class FilmController {
 		String filmId = filmDetail.getFilmId();
 		// 查询影片的详细信息 -> Dubbo的异步调用
 		// 获取影片描述信息
-//        FilmDescVO filmDescVO = filmAsyncServiceApi.getFilmDesc(filmId);
 		filmAsyncServiceApi.getFilmDesc(filmId);
 		Future<FilmDescVo> filmDescVOFuture = RpcContext.getContext().getFuture();
 		// 获取图片信息

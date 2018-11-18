@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Service
+@Service(async = true)
 public class DefaultFilmAsyncServiceImpl implements FilmAsyncServiceApi {
 
     @Autowired
