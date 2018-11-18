@@ -15,6 +15,15 @@ public class ResponseVo<T> {
 
 	private T data;
 
+	// 图片前缀
+	private String imgPre;
+
+	// 分页使用
+	// 当前页
+	private int nowPage;
+	// 总页数
+	private int totalPage;
+
 	private ResponseVo (){}
 
 	public static <T> ResponseVo success(T data){
@@ -29,6 +38,26 @@ public class ResponseVo<T> {
 		responseVo.setStatus(0);
 		responseVo.setMsg(msg);
 		return responseVo;
+	}
+
+	public static<M> ResponseVo success(String imgPre,M m){
+		ResponseVo responseVO = new ResponseVo();
+		responseVO.setStatus(0);
+		responseVO.setData(m);
+		responseVO.setImgPre(imgPre);
+
+		return responseVO;
+	}
+
+	public static<M> ResponseVo success(int nowPage,int totalPage,String imgPre,M m){
+		ResponseVo responseVO = new ResponseVo();
+		responseVO.setStatus(0);
+		responseVO.setData(m);
+		responseVO.setImgPre(imgPre);
+		responseVO.setTotalPage(totalPage);
+		responseVO.setNowPage(nowPage);
+
+		return responseVO;
 	}
 
 

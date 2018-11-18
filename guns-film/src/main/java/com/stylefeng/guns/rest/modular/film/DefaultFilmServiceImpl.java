@@ -374,9 +374,9 @@ public class DefaultFilmServiceImpl implements FilmServiceApi {
 		FilmDetailVo filmDetailVO = null;
 		// searchType 1-按名称  2-按ID的查找
 		if(searchType == 1){
-//			filmDetailVO = moocFilmTMapper.getFilmDetailByName("%"+searchParam+"%");
+			filmDetailVO = filmTMapper.getFilmDetailByName("%"+searchParam+"%");
 		}else{
-//			filmDetailVO = moocFilmTMapper.getFilmDetailById(searchParam);
+			filmDetailVO = filmTMapper.getFilmDetailById(searchParam);
 		}
 
 		return filmDetailVO;
@@ -436,8 +436,7 @@ public class DefaultFilmServiceImpl implements FilmServiceApi {
 
 	@Override
 	public List<ActorVo> getActors(String filmId) {
-//		List<ActorVo> actors = actorTMapper.getActors(filmId);
-//		return actors;
-		return null;
+		List<ActorVo> actors = actorTMapper.getActors(filmId);
+		return actors;
 	}
 }

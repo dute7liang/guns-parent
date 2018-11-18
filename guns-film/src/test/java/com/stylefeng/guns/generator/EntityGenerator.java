@@ -29,7 +29,7 @@ public class EntityGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D:\\ProjectWork\\guns-parent\\guns-rest\\src\\main\\java");//这里写你自己的java目录
+        gc.setOutputDir("D:\\ProjectWork\\guns-parent\\guns-film\\src\\main\\java");//这里写你自己的java目录
         gc.setFileOverride(true);//是否覆盖
         gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
@@ -58,7 +58,8 @@ public class EntityGenerator {
         StrategyConfig strategy = new StrategyConfig();
         //strategy.setTablePrefix(new String[]{"_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude("banner_t","cat_dict_t","source_dict_t","year_dict_t","film_t","film_info_t","actor_t");
+//        strategy.setInclude("banner_t","cat_dict_t","source_dict_t","year_dict_t","film_t","film_info_t","actor_t");
+        strategy.setInclude("film_actor_t");
         mpg.setStrategy(strategy);
 
         // 包配置
