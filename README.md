@@ -6,8 +6,8 @@ API网关特性 <br/>
 
 
 dubbo一些特性 <br/> 
-1.  启动检查
-2.  负载均衡 4种
+1. 启动检查
+2. 负载均衡 4种
   - random 随机 默认配置
   - roundRobin  轮询 roundrobin
   - leastActive 最少活跃用数
