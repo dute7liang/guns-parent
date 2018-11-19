@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 对客户端请求的jwt token验证过滤器
@@ -44,9 +45,8 @@ public class AuthFilter extends OncePerRequestFilter {
         }
 
         // 配置忽略列表
-        String ignoreUrl = jwtProperties.getIgnoreUrl();
-        String[] ignoreUrls = ignoreUrl.split(",");
-        for (String url  : ignoreUrls) {
+        List<String> ignoreUrl = jwtProperties.getIgnoreUrl();
+        for (String url  : ignoreUrl) {
             if(request.getServletPath().startsWith(url)){
                 chain.doFilter(request, response);
                 return;

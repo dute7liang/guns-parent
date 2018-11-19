@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * jwt相关配置
  *
@@ -27,7 +30,7 @@ public class JwtProperties {
 
     private String md5Key = "randomKey";
 
-    private String ignoreUrl = "";
+    private List<String> ignoreUrl = new ArrayList<>();
 
     public static String getJwtPrefix() {
         return JWT_PREFIX;

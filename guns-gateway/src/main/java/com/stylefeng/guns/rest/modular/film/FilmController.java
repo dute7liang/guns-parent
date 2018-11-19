@@ -25,10 +25,10 @@ import java.util.concurrent.Future;
 public class FilmController {
 
 
-	@Reference
+	@Reference(check = false)
 	private FilmServiceApi filmServiceApi;
 
-	@Reference
+	@Reference(check = false)
 	private FilmAsyncServiceApi filmAsyncServiceApi;
 
 	// 获取首页信息接口
