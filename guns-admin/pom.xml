@@ -106,6 +106,7 @@
             <groupId>com.ibeetl</groupId>
             <artifactId>beetl</artifactId>
         </dependency>
+        <!-- swagger-ui api-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

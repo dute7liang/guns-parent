@@ -16,14 +16,14 @@ public class SqlUtil {
      * @author fengshuonan
      */
     public static String parse(List<?> list) {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         if (list != null && list.size() > 0) {
-            str = str + "?";
+            sb.append("?");
             for (int i = 1; i < list.size(); i++) {
-                str = str + ",?";
+                sb.append(",?");
             }
         }
-        return str;
+        return sb.toString();
     }
 
     public static void main(String[] args) {

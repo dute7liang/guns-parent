@@ -24,10 +24,10 @@ public class BaseControllerExceptionHandler {
      * 拦截业务异常
      */
     @ExceptionHandler(GunsException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ErrorTip notFount(GunsException e) {
-        log.error("业务异常:", e);
+        @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+        @ResponseBody
+        public ErrorTip notFount(GunsException e) {
+            log.error("业务异常:", e);
         return new ErrorTip(e.getCode(), e.getMessage());
     }
 
