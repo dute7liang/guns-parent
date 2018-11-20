@@ -1,4 +1,4 @@
-Ìí¼ÓÒÀÀµ°ü
+æ·»åŠ ä¾èµ–åŒ…
 	  <dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
@@ -15,18 +15,18 @@
 		</dependency>
 
 
-Ìí¼Ó¿ªÆô×¢½â
+æ·»åŠ å¼€å¯æ³¨è§£
 	@EnableHystrixDashboard
 	@EnableCircuitBreaker
 	@EnableHystrix
 	
-ÅäÖÃÊ¾Àı
+é…ç½®ç¤ºä¾‹
 @HystrixCommand(fallbackMethod = "error", commandProperties = {
 @HystrixProperty(name="execution.isolation.strategy", value = "THREAD"),
 @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value
 = "4000"),
 @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
-@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = ¡±50")
+@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = â€50")
 }, threadPoolProperties = {
 @HystrixProperty(name = "coreSize", value = "1"),
 @HystrixProperty(name = "maxQueueSize", value = "10"),

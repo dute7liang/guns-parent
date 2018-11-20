@@ -2,8 +2,11 @@ package com.stylefeng.guns.rest.modular.order;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.stylefeng.guns.api.order.OrderServiceAPI;
 import com.stylefeng.guns.api.order.vo.OrderVo;
+import com.stylefeng.guns.core.util.TokenBucket;
 import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.modular.vo.ResponseVo;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +23,7 @@ import java.util.List;
 @RequestMapping(value = "/order/")
 public class OrderController {
 
-//    private static TokenBucket tokenBucket = new TokenBucket();
+    private static TokenBucket tokenBucket = new TokenBucket();
 
     @Reference(
             interfaceClass = OrderServiceAPI.class,
@@ -35,16 +38,33 @@ public class OrderController {
             group = "order2017")
     private OrderServiceAPI orderServiceAPI2017;
 
+
+    public ResponseVo error(Integer fieldId,String soldSeats,String seatsName){
+        return ResponseVo.serviceFail("抱歉，下单的人太多了，请稍后重试");
+    }
+
     // 购票
     /*
         信号量隔离
         线程池隔离
         线程切换
      */
+    @HystrixCommand(fallbackMethod = "error", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.strategy", value = "THREAD"),
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "4000"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50")},
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "1"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10"),
+                    @HystrixProperty(name = "keepAliveTimeMinutes", value = "1000"),
+                    @HystrixProperty(name = "queueSizeRejectionThreshold", value = "8"),
+                    @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "12"),
+                    @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "1500")
+            })
     @RequestMapping(value = "buyTickets",method = RequestMethod.POST)
     public ResponseVo buyTickets(Integer fieldId,String soldSeats,String seatsName){
-
-//        if(tokenBucket.getToken()){
+        if(tokenBucket.getToken()){
             // 验证售出的票是否为真
             boolean isTrue = orderServiceAPI.isTrueSeats(fieldId+"",soldSeats);
 
@@ -68,9 +88,9 @@ public class OrderController {
             }else{
                 return ResponseVo.serviceFail("订单中的座位编号有问题");
             }
-//        }else{
-//            return ResponseVO.serviceFail("购票人数过多，请稍后再试");
-//        }
+        }else{
+            return ResponseVo.serviceFail("购票人数过多，请稍后再试");
+        }
     }
 
 
