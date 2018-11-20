@@ -13,35 +13,35 @@ dubbo一些特性 <br/>
    leastActive 最少活跃用数 <br/> 
    consistentHash 一致性Hash （用的较少） <br/> 
   
-3. 多协议 protocol <br/> 
+3. 多协议 protocol  
 常用三种 <br/> 
   dubbo : TCP 适合数据包较小 100K 消费者个数较多，常规方式 <br/> 
   RMI : TCP 适合数据包大小不一，消费者和提供者数量相差不大 <br/> 
   Hessian : HTTP 适合数据包大小不一，消费者和提供者数量相差不大 <br/> 
 
-4. dubbo 异步调用 <br/> 
+4. 异步调用  
   syn=true
   
-5. 结果缓存 <br/> 
+5. 结果缓存  
   lru 基于最近最少使用原则删除多余缓存，保持最热的数据被缓存。（一般用这个） <br/> 
   threadlocal  当前线程缓存 <br/> 
   jcache <br/> 
  @reference(cache="lru") <br/> 
 
-6. 连接控制 <br/> 
-一般在提供者设置(注意dubbo是长连接) <br/> 
-// 服务端连接数不能超过10个 超出会报错 <br/>
-@service(accepts=10)
+6. 连接控制  
+ 一般在提供者设置(注意dubbo是长连接) <br/> 
+ // 服务端连接数不能超过10个 超出会报错 <br/>
+ @service(accepts=10)
 
-7. 并发控制 <br/> 
+7. 并发控制  
 // 最多10个线程同时启动 超出会报错 <br/> 
 @service(executes = 10)  <br/> 
 // 每个客户端最多10个线程同时启动 超出会报错 <br/> 
 @service(actives = 10) <br/> 
 
-8. 分组 <br/> 
+8. 分组
 
-9. 聚合 <br/> 
+9. 聚合 
 
 10. 多版本，蓝绿上线
 
