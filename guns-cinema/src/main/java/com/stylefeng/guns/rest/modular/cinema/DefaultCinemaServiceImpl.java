@@ -227,7 +227,7 @@ public class DefaultCinemaServiceImpl implements CinemaServiceAPI {
         orderQueryVo.setCinemaId(fieldT.getCinemaId() + "");
         orderQueryVo.setFilmPrice(fieldT.getPrice() + "");
 
-        return null;
+        return orderQueryVo;
     }
 
 }

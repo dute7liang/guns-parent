@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.modular.order;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -37,7 +38,7 @@ public class DefaultOrderServiceImpl implements OrderServiceAPI {
 	@Autowired
 	private FtpUtil ftpUtil;
 
-	@Autowired
+	@Reference
 	private CinemaServiceAPI cinemaServiceAPI;
 
 	@Override

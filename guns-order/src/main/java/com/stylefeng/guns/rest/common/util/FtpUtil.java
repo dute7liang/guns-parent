@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.io.InputStreamReader;
  */
 @Slf4j
 @Data
+@Component
 @Configurable
 @ConfigurationProperties(prefix = FtpUtil.FTP_PREFIX)
 public class FtpUtil {

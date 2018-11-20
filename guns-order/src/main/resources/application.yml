@@ -1,5 +1,5 @@
 server:
-  port: 87 #项目端口
+  port: 88 #项目端口
 
 mybatis-plus:
   mapper-locations: classpath*:com/stylefeng/guns/rest/**/mapping/*.xml
@@ -27,7 +27,7 @@ spring:
     registry : zookeeper://47.107.155.58:2181
     protocol :
       name : dubbo
-      port : 20885
+      port : 20886
   datasource:
       url: jdbc:mysql://47.107.155.58:3306/dubbo_test?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
       username: dubbo_test
