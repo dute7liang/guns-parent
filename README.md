@@ -51,5 +51,18 @@ dubbo一些特性 <br/>
 
 12. 熔断,降级  
  集成使用hystrix
+ 
+13. 本地存根  
+ 类似于代理模式，可以检测数据的正常性，来做一些统一处理
+ stub="com.zl.DemoServiceStu.class" 
+
+14. 本地伪装  
+ 可作为降级的一种手段
+ mock="com.zl.DemoBarService.class" 
+ mock 默认只会处理RPCException的异常
+ 
+15. 隐式参数 
+ 类似于Session设置Attachment的键值对， 后面的流程可以直接取用，参数只能保存一次远程调用，多次就要多次设置
+
 
 
