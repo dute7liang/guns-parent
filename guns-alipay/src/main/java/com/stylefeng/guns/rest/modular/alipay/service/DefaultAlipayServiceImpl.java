@@ -7,8 +7,8 @@ import com.stylefeng.guns.api.alipay.AliPayServiceAPI;
 import com.stylefeng.guns.api.alipay.vo.AliPayInfoVo;
 import com.stylefeng.guns.api.alipay.vo.AliPayResultVo;
 import com.stylefeng.guns.api.order.OrderServiceAPI;
-import com.stylefeng.guns.api.order.vo.OrderVO;
-import com.stylefeng.guns.rest.common.util.FTPUtil;
+import com.stylefeng.guns.api.order.vo.OrderVo;
+import com.stylefeng.guns.core.util.FtpUtil;
 import com.stylefeng.guns.rest.modular.alipay.config.Configs;
 import com.stylefeng.guns.rest.modular.alipay.model.ExtendParams;
 import com.stylefeng.guns.rest.modular.alipay.model.GoodsDetail;
@@ -38,7 +38,7 @@ public class DefaultAlipayServiceImpl implements AliPayServiceAPI {
     private OrderServiceAPI orderServiceAPI;
 
     @Autowired
-    private FTPUtil ftpUtil;
+    private FtpUtil ftpUtil;
 
     // 支付宝当面付2.0服务
     private static AlipayTradeService tradeService;
@@ -146,7 +146,7 @@ public class DefaultAlipayServiceImpl implements AliPayServiceAPI {
     public String trade_precreate(String orderId) {
         String filePath = "";
         // 获取订单信息
-        OrderVO orderVO = orderServiceAPI.getOrderInfoById(orderId);
+        OrderVo orderVO = orderServiceAPI.getOrderInfoById(orderId);
 
         // (必填) 商户网站订单系统中唯一订单号，64个字符以内，只能包含字母、数字、下划线，
         // 需保证商户系统端不能重复，建议通过数据库sequence生成，
@@ -239,5 +239,8 @@ public class DefaultAlipayServiceImpl implements AliPayServiceAPI {
         }
         return filePath;
     }
+
+
+
 
 }

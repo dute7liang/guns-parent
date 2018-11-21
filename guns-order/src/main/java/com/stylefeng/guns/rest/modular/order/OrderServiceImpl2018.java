@@ -200,4 +200,44 @@ public class OrderServiceImpl2018 implements OrderServiceAPI {
             return soldSeatsByFieldId;
         }
     }
+
+    @Override
+    public OrderVo getOrderInfoById(String orderId) {
+
+        OrderVo orderInfoById = order2018TMapper.getOrderInfoById(orderId);
+
+        return orderInfoById;
+    }
+
+
+    @Override
+    public boolean paySuccess(String orderId) {
+
+//        String userId = RpcContext.getContext().getAttachment("userId");
+//        System.out.println("userId="+userId);
+
+        Order2018T orderT = new Order2018T();
+        orderT.setUuid(orderId);
+        orderT.setOrderStatus(1);
+        Integer integer = order2018TMapper.updateById(orderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean payFail(String orderId) {
+        Order2018T orderT = new Order2018T();
+        orderT.setUuid(orderId);
+        orderT.setOrderStatus(2);
+
+        Integer integer = order2018TMapper.updateById(orderT);
+        if(integer>=1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

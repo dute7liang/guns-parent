@@ -46,4 +46,11 @@ public interface OrderServiceAPI {
      */
     String getSoldSeatsByFieldId(Integer fieldId);
 
+
+    OrderVo getOrderInfoById(String orderId);
+
+    boolean paySuccess(String orderId);
+
+    boolean payFail(String orderId);
+
 }
