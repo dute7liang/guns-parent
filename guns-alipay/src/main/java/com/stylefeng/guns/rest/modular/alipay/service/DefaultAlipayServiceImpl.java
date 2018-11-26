@@ -74,7 +74,10 @@ public class DefaultAlipayServiceImpl implements AliPayServiceAPI {
     public AliPayInfoVo getQRCode(String orderId) {
 
         // 获取二维码地址
-        String filePath = trade_precreate(orderId);
+//        String filePath = trade_precreate(orderId);
+
+        // 测试代码，ftp二维码地址写死
+        String filePath = "erweima.jpg";
         // 如果地址为空，则表示获取二维码不成功
         if(filePath==null || filePath.trim().length()==0){
             return null;
@@ -91,11 +94,18 @@ public class DefaultAlipayServiceImpl implements AliPayServiceAPI {
     public AliPayResultVo getOrderStatus(String orderId) {
         // 看看是否有当前登陆人
 //        String userId = RpcContext.getContext().getAttachment("userId");
-//
 //        log.info("DefaultAlipayServiceImpl - getOrderStatus - userId = "+userId);
 
         // 获取订单支付状态
-        boolean isSuccess = trade_query(orderId);
+//        boolean isSuccess = trade_query(orderId);
+
+        // 获取订单支付状态，测试代码
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        boolean isSuccess = true;
         if(isSuccess){
             AliPayResultVo aliPayResultVO = new AliPayResultVo();
             aliPayResultVO.setOrderId(orderId);

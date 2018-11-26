@@ -136,6 +136,8 @@ public class OrderController {
         }
     }
 
+
+
     @RequestMapping(value = "getPayInfo",method = RequestMethod.POST)
     public ResponseVo getPayInfo(@RequestParam("orderId") String orderId){
         // 获取当前登陆人的信息
