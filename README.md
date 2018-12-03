@@ -34,7 +34,7 @@ dubbo常用一些特性
  @service(accepts=10)  
 
 7. 并发控制  
-// 最多10个线程同时启动 超出会报错   
+// 最多10个线程同时启动 超出会报错  
 @service(executes = 10)   
 // 每个客户端最多10个线程同时启动 超出会报错  
 @service(actives = 10)  
@@ -61,7 +61,7 @@ dubbo常用一些特性
  mock="com.zl.DemoBarService.class"  
  mock 默认只会处理RPCException的异常  
  
-15. 隐式参数 
+15. 隐式参数  
  类似于Session设置Attachment的键值对， 后面的流程可以直接取用，参数只能保存一次远程调用，多次就要多次设置
 
 
