@@ -53,6 +53,12 @@ public class DefaultUserImpl implements UserApi {
 		return false;
 	}
 
+
+	public static void main(String[] args) {
+		String admin = MD5Util.encrypt("admin");
+		System.out.println(admin);
+	}
+
 	@Override
 	public boolean checkUserName(String userName) {
 		EntityWrapper<UserT> entityWrapper = new EntityWrapper<>();
