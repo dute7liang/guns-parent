@@ -18,6 +18,10 @@ public class DruidProperties {
 
     private String password = "root";
 
+    /**
+     * 5.6 使用
+     * 以下可能需要使用 com.mysql.jdbc.Driver
+     */
     private String driverClassName = "com.mysql.cj.jdbc.Driver";
 
     private Integer initialSize = 2;
